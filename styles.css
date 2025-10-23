@@ -100,21 +100,33 @@
   background:#fff4cc;margin-bottom:.75rem;font-size:22px;
 }
 
-/* TESTIMONIALS */
-.testi { display:grid; grid-template-columns: auto 1fr auto; gap:.75rem; align-items:center; }
-.testi-slide {
-  border:1px solid #e5e7eb; border-radius:16px; padding:1.25rem; background:#fff;
-  min-height:96px; display:grid; place-items:center; text-align:center;
-}
-.quote { font-size:18px; color:#0f172a; margin:0; }
-.testi-btn {
-  background:#fff; border:1px solid #e5e7eb; width:40px; height:40px; border-radius:12px;
-  font-size:20px; cursor:pointer;
-}
-.testi-dots { display:flex; gap:.4rem; justify-content:center; margin-top:.6rem; }
-.testi-dots .dot { width:8px;height:8px;border-radius:9999px;background:#e5e7eb; }
-.testi-dots .dot.active { background:#0f172a; }
+/* --- Testimonials carousel --- */
+.stars-row{display:flex;align-items:center;gap:.5rem;margin:.4rem 0 1rem 0}
+.stars{letter-spacing:.15rem;font-size:20px;color:#f59e0b}
+.rating{font-weight:800}
+.meta{color:#64748b;font-size:14px}
 
+.testi-carousel{overflow:hidden}
+.testi-track{display:flex;gap:16px;will-change:transform}
+.testi-card{
+  min-width:320px;max-width:360px;background:#f8fafc;border:1px solid #e5e7eb;
+  border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px
+}
+.testi-head{display:flex;align-items:center;gap:10px}
+.avatar{width:40px;height:40px;border-radius:50%;background:#e2e8f0;display:grid;place-items:center;font-weight:700}
+.name{font-weight:700}
+.role{font-size:12px;color:#64748b}
+.tstars{font-size:14px;color:#f59e0b}
+.quote{color:#0f172a;line-height:1.5}
+.testi-controls{display:flex;gap:8px;justify-content:flex-end;margin-top:10px}
+.testi-btn{
+  border:1px solid #e5e7eb;background:#fff;border-radius:12px;padding:.4rem .7rem;
+  cursor:pointer;font-size:18px
+}
+.testi-btn:hover{background:#f8fafc}
+@media (max-width: 640px){
+  .testi-card{min-width:260px}
+}
 /* PARTNERS */
 .partners { display:grid; grid-template-columns: repeat(2,1fr); gap:1rem; margin-top:1rem; }
 @media (min-width:800px){ .partners { grid-template-columns: repeat(4,1fr); } }
@@ -311,3 +323,4 @@ footer small{color:var(--muted)}
 .service-img{width:100%;aspect-ratio:16/9;border:1px dashed #e5e7eb;border-radius:12px;display:grid;place-items:center;background:#f8fafc}
 .service-hero-img{width:100%;aspect-ratio:16/7;background:#f8fafc;border:1px solid #e5e7eb;border-radius:16px;margin:1rem 0}
 .service-card .btn{align-self:flex-start;margin-top:auto}
+

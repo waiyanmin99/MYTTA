@@ -1,93 +1,20 @@
+<!-- This is Home Page. -->
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MYTTA Foundation – Home</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="site-header.js" defer></script>
+  <script src="site-footer.js" defer></script>
+  <script src="main.js" defer></script>
 </head>
 <body>
 
   <!-- Global Nav -->
-  <header>
-    <div class="nav-container">
-      <div class="nav-left">
-        <a href="index.html" class="brand-link">
-          <img src="logo.jpg" alt="MYTTA" class="logo">
-          <strong>MYTTA Foundation</strong>
-        </a>
-      </div>
-      
-      <div class="nav-center">
-        <a href="index.html" class="nav-link">Home</a>
-
-        <div class="dropdown">
-          <button class="nav-link dropdown-toggle">Services</button>
-          <div class="mega">
-            <div class="mega-grid">
-              <a class="mega-item" href="services-asylum.html">🕊️ Asylum & Refugee</a>
-              <a class="mega-item" href="services-ead.html">💼 Employment Authorization (EAD)</a>
-              <a class="mega-item" href="services-greencard.html">🪪 Green Card & I-130</a>
-              <a class="mega-item" href="services-eoir.html">⚖️ EOIR / Court Defense</a>
-              <a class="mega-item" href="services-vawa-u.html">💛 VAWA & U Visa</a>
-              <a class="mega-item" href="services-detention.html">🏥 Detention Support</a>
-              <a class="mega-item" href="services-student.html">🎓 Student Visa Assistance</a>
-              <a class="mega-item" href="services-general.html">📂 General Legal / Court</a>
-            </div>
-            <div class="mega-cta">
-              <div>Not sure where to start?</div>
-              <a class="btn btn-primary" href="analytics.html">Browse All Services</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Case Tools (mega menu style like Services) -->
-        <div class="dropdown">
-          <button class="nav-link dropdown-toggle">Case Tools</button>
-          <div class="mega">
-            <div class="mega-grid">
-              <a class="mega-item" href="https://egov.uscis.gov/casestatus/landing.do" target="_blank" rel="noopener">📅 Case Status Checker</a>
-              <a class="mega-item" href="https://egov.uscis.gov/processing-times/" target="_blank" rel="noopener">🕒 Processing Time Estimator</a>
-              <a class="mega-item" href="features.html#guides">📘 Form Guide Library</a>
-              <a class="mega-item" href="features.html#checklist">📄 Document Checklist Generator</a>
-              <a class="mega-item" href="features.html#alerts">🔔 Case Alerts & Notifications</a>
-              <a class="mega-item" href="features.html#tracker">📊 Case Tracker Overview</a>
-              <a class="mega-item" href="features.html#uploads">⬆️ Upload Evidence / Forms</a>
-              <a class="mega-item" href="features.html#exports">📥 Export CSV / PDF</a>
-            </div>
-            <div class="mega-cta">
-              <div>Want everything in one place?</div>
-              <a class="btn btn-primary" href="features.html">Open Case Tools</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="dropdown">
-          <button class="nav-link dropdown-toggle">Knowledge</button>
-          <div class="menu">
-            <a href="articles.html">Articles & Q&A</a>
-            <a href="faq.html">FAQ & Downloads</a>
-          </div>
-        </div>
-
-        <div class="dropdown">
-          <button class="nav-link dropdown-toggle">Community</button>
-          <div class="menu">
-            <a href="community.html">Events & Workshops</a>
-            <a href="community.html#volunteer">Volunteer / Internship</a>
-            <a href="team.html#partners">Partners</a>
-          </div>
-        </div>
-
-        <a href="team.html" class="nav-link">About</a>
-        <a href="contact.html" class="nav-link">Contact</a>
-      </div>
-      <div class="nav-right">
-        <a href="donate.html" class="btn donate-btn">Login/Signup</a>
-      </div>
-
-    </div>
-  </header>
+  <site-header></site-header>
 
   <!-- HERO -->
   <section class="hero" style="background:#000;color:#fff;">
@@ -111,22 +38,22 @@
     <div class="container">
       <h2 class="section-title">Start here</h2>
       <div class="quick-grid">
-        <a class="quick-box" href="features.html#asylum">
+        <a class="quick-box" href="services-asylum.html">
           <div class="icon-circle">🕊️</div>
           <h3>Asylum</h3>
           <p class="muted">Screening, filing timeline, key documents.</p>
         </a>
-        <a class="quick-box" href="features.html#greencard">
+        <a class="quick-box" href="services-greencard.html">
           <div class="icon-circle">🪪</div>
           <h3>Green Card</h3>
           <p class="muted">Eligibility, forms, and interview prep.</p>
         </a>
-        <a class="quick-box" href="features.html#workpermit">
+        <a class="quick-box" href="services-ead.html">
           <div class="icon-circle">💼</div>
           <h3>Work Permit</h3>
           <p class="muted">EAD categories, renewals, processing.</p>
         </a>
-        <a class="quick-box" href="features.html#court">
+        <a class="quick-box" href="services-eoir.html">
           <div class="icon-circle">⚖️</div>
           <h3>Court Help</h3>
           <p class="muted">Notices, hearings, and representation.</p>
@@ -139,11 +66,15 @@
   <section class="pad40" style="background:#fff;">
     <div class="container">
       <div class="small-grid">
-        <div class="mini-card">
+        <a href="features.html" class="mini-card-link">
+          <div class="mini-card">
           <div class="icon-circle">📊</div>
           <h3>Case Tracker</h3>
           <p class="muted">Track all USCIS, NVC, and DOL cases efficiently.</p>
-        </div>
+          </div>
+
+
+        </a>
         <div class="mini-card">
           <div class="icon-circle">📈</div>
           <h3>Processing Trends</h3>
@@ -176,17 +107,22 @@
   <!-- TESTIMONIALS -->
   <section class="pad40" style="background:#fff;">
     <div class="container">
-      <h2 class="section-title">What clients say</h2>
-      <div class="testi">
-        <button class="testi-btn" id="tPrev">‹</button>
-        <div class="testi-slide">
-          <blockquote class="quote" data-quote>
-            “MYTTA treated me like family. I finally understood my options.” — A.M.
-          </blockquote>
-        </div>
-        <button class="testi-btn" id="tNext">›</button>
+      <h2 class="section-title">Testimonials</h2>
+
+      <div class="stars-row" aria-hidden="true">
+        <span class="stars">★ ★ ★ ★ ★</span>
+        <span class="rating">4.8</span>
+        <span class="meta">(App Store)</span>
       </div>
-      <div class="testi-dots" id="tDots"></div>
+
+      <div class="testi-carousel">
+        <div class="testi-track" id="testiTrack"></div>
+      </div>
+
+      <div class="testi-controls">
+        <button class="testi-btn" id="tPrev" aria-label="Previous">‹</button>
+        <button class="testi-btn" id="tNext" aria-label="Next">›</button>
+      </div>
     </div>
   </section>
 
@@ -203,32 +139,8 @@
     </div>
   </section>
 
+  <site-footer></site-footer>
   
-  <footer>
-    <div class="container pad28">
-      <div class="cols cols-4">
-        <div>
-          <strong>MYTTA Foundation</strong>
-          <div><small>© <span id="year"></span> MYTTA Foundation</small></div>
-          <div><small class="muted">“Dare to Dream.”</small></div>
-        </div>
-        <div>
-          <strong>Product</strong>
-          <div><small class="muted"><a href="analytics.html">Services</a> · <a href="features.html">Case Tools</a> · <a href="articles.html">Knowledge</a></small></div>
-        </div>
-        <div>
-          <strong>Company</strong>
-          <div><small class="muted"><a href="team.html">About</a> · <a href="community.html">Community</a> · <a href="team.html#partners">Partners</a></small></div>
-        </div>
-        <div>
-          <strong>Support</strong>
-          <div><small class="muted"><a href="faq.html">FAQ</a> · <a href="contact.html">Contact</a> · <a href="donate.html">Donate</a></small></div>
-        </div>
-      </div>
-    </div>
-  </footer>
 
-
-<script src="main.js"></script>
 </body>
 </html>

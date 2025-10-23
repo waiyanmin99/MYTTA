@@ -1,5 +1,7 @@
 // Year
-document.getElementById('year').textContent = new Date().getFullYear();
+const yearEl = document.getElementById('year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
+
 
 // Feature cards
 const features = [
@@ -40,41 +42,91 @@ if (wrap) tiers.forEach(t=>{
 var _btn=document.getElementById('startBtn'); if(_btn) _btn.addEventListener('click',()=>{
   alert('Demo only: hook this up to your sign‑up flow.');
 });
-// --- Testimonials slider ---
-const quotes = [
-  "“MYTTA treated me like family. I finally understood my options.” — A.M.",
-  "“Clear guidance for my asylum case. I felt supported the whole way.” — R.K.",
-  "“They helped me renew my work permit on time. Huge relief.” — J.S.",
-];
-const qEl = document.querySelector('[data-quote]');
-const dotsWrap = document.getElementById('tDots');
-const prev = document.getElementById('tPrev');
-const next = document.getElementById('tNext');
+// --- Testimonials carousel (continuous scroll) ---
+(function(){
+  const reviews = [
+    { name:"Eli*****", role:"Asylum client", stars:5,
+      text:"Phenomenal support. Clear steps and follow-ups. Huge peace of mind.",
+      photo:"" },
+    { name:"Gri*****", role:"EAD renewal", stars:5,
+      text:"Got reminders and guidance. Wish I had used this earlier.",
+      photo:"" },
+    { name:"Cra*****", role:"Court prep", stars:5,
+      text:"Explained everything. I didn’t have to log in to USCIS daily anymore.",
+      photo:"" },
+    { name:"A.M.", role:"Family petition", stars:5,
+      text:"They treated me like family. I finally understood my options.",
+      photo:"" },
+    { name:"R.K.", role:"Asylum interview", stars:5,
+      text:"Practice interview and checklist made me confident.",
+      photo:"" },
+    { name:"J.S.", role:"Work permit", stars:5,
+      text:"Renewal on time—no lapse. Thank you!", photo:"" },
+  ];
 
-if (qEl && dotsWrap && prev && next) {
-  let i = 0;
-  // dots
-  const dots = quotes.map((_, idx) => {
-    const d = document.createElement('div');
-    d.className = 'dot' + (idx === 0 ? ' active' : '');
-    d.addEventListener('click', () => { i = idx; render(); });
-    dotsWrap.appendChild(d);
-    return d;
-  });
+  const track = document.getElementById('testiTrack');
+  if (!track) return;
 
-  function render() {
-    qEl.textContent = quotes[i];
-    dots.forEach((d, idx) => d.classList.toggle('active', idx === i));
+  const makeStars = n => '★ '.repeat(n).trim();
+  const cardHTML = r => `
+    <article class="testi-card">
+      <div class="testi-head">
+        <div class="avatar">
+          ${r.photo ? `<img src="${r.photo}" alt="${r.name}" style="width:100%;height:100%;object-fit:cover;border-radius:50%">` : r.name.slice(0,1)}
+        </div>
+        <div>
+          <div class="name">${r.name}</div>
+          <div class="role">${r.role}</div>
+        </div>
+        <div class="tstars" style="margin-left:auto">${makeStars(r.stars)}</div>
+      </div>
+      <p class="quote">“${r.text}”</p>
+    </article>
+  `;
+
+  // Populate track with 2x set for seamless loop
+  track.innerHTML = reviews.map(cardHTML).join('') + reviews.map(cardHTML).join('');
+
+  let x = 0;
+  const speed = 0.4;      // px per frame (adjust to taste)
+  let running = true;
+  let loopWidth = 0;
+
+  function computeLoopWidth(){
+    const children = track.children;
+    let w = 0, half = children.length / 2;
+    for (let i=0;i<half;i++) w += children[i].getBoundingClientRect().width + 16; // +gap
+    loopWidth = w;
   }
+  computeLoopWidth();
+  window.addEventListener('resize', computeLoopWidth);
 
-  prev.addEventListener('click', () => { i = (i - 1 + quotes.length) % quotes.length; render(); });
-  next.addEventListener('click', () => { i = (i + 1) % quotes.length; render(); });
+  function tick(){
+    if (running){
+      x -= speed;
+      if (-x >= loopWidth) x = 0;
+      track.style.transform = `translateX(${x}px)`;
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
 
-  // auto-advance every 5s
-  setInterval(() => { i = (i + 1) % quotes.length; render(); }, 5000);
+  // Controls
+  function step(dir){
+    const first = track.querySelector('.testi-card');
+    if(!first) return;
+    const w = first.getBoundingClientRect().width + 16;
+    x += dir * w; // +1 => right, -1 => left
+  }
+  document.getElementById('tPrev')?.addEventListener('click', ()=>step(+1));
+  document.getElementById('tNext')?.addEventListener('click', ()=>step(-1));
 
-  render();
-}
+  // Pause on hover
+  //track.addEventListener('mouseenter', ()=> running = false);
+  //track.addEventListener('mouseleave', ()=> running = true);
+})();
+
+
 
 
 // --- Dropdown click support (mobile + accessibility) ---

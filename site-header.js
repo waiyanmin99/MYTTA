@@ -1,13 +1,6 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Donate – MYTTA</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <header>
+
+class SiteHeader extends HTMLElement {
+  connectedCallback() { this.innerHTML = `<header>
     <div class="nav-container">
       <div class="nav-left">
         <a href="index.html" class="brand-link">
@@ -59,6 +52,7 @@
             </div>
           </div>
         </div>
+
         <div class="dropdown">
           <button class="nav-link dropdown-toggle">Knowledge</button>
           <div class="menu">
@@ -80,60 +74,10 @@
         <a href="contact.html" class="nav-link">Contact</a>
       </div>
       <div class="nav-right">
-        <a href="donate.html" class="btn donate-btn">Login</a>
+        <a href="signup_login.html" class="btn donate-btn">Login/Signup</a>
       </div>
 
     </div>
-  </header>
-
-<section class="pad40" style="background:#fff;">
-  <div class="container">
-    <h1 class="section-title">Donate / Support</h1>
-    <p class="muted" style="max-width:720px">Your gift powers direct services for vulnerable clients.</p>
-    
-<div class="grid two">
-  <div class="card">
-    <h3>Support Us</h3>
-    <ul class="list">
-      <li>Sponsor a legal case</li>
-      <li>Donate for student legal aid</li>
-      <li>Support Myanmar diaspora legal empowerment</li>
-    </ul>
-  </div>
-  <div class="card">
-    <h3>Ways to Give</h3>
-    <p class="muted">Add Stripe/PayPal links or instructions here.</p>
-  </div>
-</div>
-
-  </div>
-</section>
-
-
-  <footer>
-    <div class="container pad28">
-      <div class="cols cols-4">
-        <div>
-          <strong>MYTTA Foundation</strong>
-          <div><small>© <span id="year"></span> MYTTA Foundation</small></div>
-          <div><small class="muted">“Dare to Dream.”</small></div>
-        </div>
-        <div>
-          <strong>Product</strong>
-          <div><small class="muted"><a href="analytics.html">Services</a> · <a href="features.html">Case Tools</a> · <a href="articles.html">Knowledge</a></small></div>
-        </div>
-        <div>
-          <strong>Company</strong>
-          <div><small class="muted"><a href="team.html">About</a> · <a href="community.html">Community</a> · <a href="team.html#partners">Partners</a></small></div>
-        </div>
-        <div>
-          <strong>Support</strong>
-          <div><small class="muted"><a href="faq.html">FAQ</a> · <a href="contact.html">Contact</a> · <a href="donate.html">Donate</a></small></div>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-<script src="main.js"></script>
-</body>
-</html>
+  </header>`; }
+}
+customElements.define('site-header', SiteHeader);
