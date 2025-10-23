@@ -324,3 +324,176 @@ footer small{color:var(--muted)}
 .service-hero-img{width:100%;aspect-ratio:16/7;background:#f8fafc;border:1px solid #e5e7eb;border-radius:16px;margin:1rem 0}
 .service-card .btn{align-self:flex-start;margin-top:auto}
 
+/* =========================
+   Auth (Login / Signup)
+   ========================= */
+.muted { color: var(--muted); }
+
+.auth-wrap {
+  min-height: calc(100vh - 180px);    /* viewport minus header/footer approx */
+  display: grid;
+  place-items: start center;
+  padding: 40px 16px;
+  background: #fff;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 520px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.04);
+}
+
+.auth-title { font-size: 22px; font-weight: 800; margin: 0 0 18px 0; }
+
+.form-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 12px 0 6px 0;
+}
+
+.input {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 16px;
+  outline: none;
+  background: #fff;
+  transition: box-shadow .2s ease, border-color .2s ease;
+}
+.input:focus { border-color: #cbd5e1; box-shadow: 0 0 0 4px rgba(37,99,235,.12); }
+
+.row-between {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; margin-top: 8px;
+}
+
+.block { display: block; width: 100%; }
+.space { height: 10px; }
+
+.divider {
+  display: flex; align-items: center; gap: 12px;
+  color: var(--muted); font-size: 14px; margin: 14px 0;
+}
+.divider::before, .divider::after { content: ""; height: 1px; background: var(--line); flex: 1; }
+
+/* Buttons: you already have .btn and .btn-primary; reuse them */
+.btn-auth { border-radius: 12px; padding: 12px 16px; font-weight: 700; }
+.btn-google { border: 1px solid var(--line); background: #fff; }
+.btn-google:hover { background: #f8fafc; }
+
+.gicon { width: 18px; height: 18px; display: inline-block; }
+
+/* Small screen tweaks */
+@media (max-width: 480px){
+  .auth-card { padding: 22px; }
+}
+/* ========= Footer (dark, 4-column, social beside Company) ========= */
+.footer {
+  border-top: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+}
+.footer--dark {
+  background: #0b0f1a;        /* deep slate */
+  color: #e2e8f0;
+  border-top: none;
+}
+.footer--dark a { color: #cbd5e1; text-decoration: none; }
+.footer--dark a:hover { color: #ffffff; }
+
+/* grid layout */
+.footer-cols {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr)); /* Brand · Product · Company · Connect */
+  column-gap: 2rem;
+  row-gap: 1.25rem;
+  align-items: start;
+}
+
+/* headings & muted text */
+.footer strong { display:block; margin-bottom:.5rem; font-size:14px; letter-spacing:.02em; }
+.footer .muted { color: #94a3b8; }
+
+/* link lists */
+.f-list { list-style: none; margin: 0; padding: 0; }
+.f-list li { margin: .35rem 0; }
+.f-list a { text-decoration: none; }
+
+/* social list (icons + label on one line) */
+.social a {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+}
+.ico {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  fill: currentColor;  /* inherit color (works in dark/light) */
+  opacity: .9;
+  transition: opacity .15s ease;
+}
+.social a:hover .ico { opacity: 1; }
+
+/* optional: subtle focus ring for a11y */
+.footer a:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* responsive breakpoints */
+@media (max-width: 900px){
+  .footer-cols { grid-template-columns: 1fr 1fr; }
+  /* undo right alignment on small screens */
+  .footer-cols > div:last-child { text-align: left; }
+}
+@media (max-width: 540px){
+  .footer-cols { grid-template-columns: 1fr; }
+}
+
+/* desktop nicety: right-align the Connect column */
+@media (min-width: 901px){
+  .footer-cols > div:last-child {
+    text-align: right;
+  }
+  .footer-cols > div:last-child a { justify-content: flex-end; }
+}
+.ico{ vertical-align: -2px; }
+.social li{ margin:.4rem 0; }
+/* Footer grid: force 4 columns on desktop */
+.cols { display: grid; gap: 2rem; }
+.cols.cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+/* Right-align the last column (Connect) on wide screens */
+@media (min-width: 901px){
+  .cols.cols-4 > div:last-child { text-align: right; }
+  .cols.cols-4 > div:last-child a { justify-content: flex-end; }
+}
+
+/* Stack to 2 columns on tablets */
+@media (max-width: 900px){
+  .cols.cols-4 { grid-template-columns: 1fr 1fr; }
+  .cols.cols-4 > div:last-child { text-align: left; } /* undo right align */
+}
+
+/* Stack to 1 column on phones */
+@media (max-width: 540px){
+  .cols.cols-4 { grid-template-columns: 1fr; }
+}
+@media (min-width:1200px){
+  .footer-cols > div:not(:first-child){
+    position:relative;
+  }
+  .footer-cols > div:not(:first-child)::before{
+    content:"";
+    position:absolute; left:-1rem; top:.35rem; bottom:.35rem;
+    width:1px; background:rgba(255,255,255,.08);
+  }
+}

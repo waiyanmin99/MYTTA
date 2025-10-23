@@ -1,65 +1,73 @@
-<!-- This is Login Page -->
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Donate – MYTTA</title>
+  <title>Login – MYTTA Foundation</title>
+
+  <!-- Your existing global styles -->
   <link rel="stylesheet" href="styles.css">
+
+  <!-- Existing shared components -->
   <script src="site-header.js" defer></script>
   <script src="site-footer.js" defer></script>
-  <script src="main.js" defer></script>
 </head>
+
 <body>
-<site-header></site-header>
-<section class="pad40" style="background:#fff;">
-  <div class="container">
-    <h1 class="section-title">Donate / Support</h1>
-    <p class="muted" style="max-width:720px">Your gift powers direct services for vulnerable clients.</p>
-    
-<div class="grid two">
-  <div class="card">
-    <h3>Support Us</h3>
-    <ul class="list">
-      <li>Sponsor a legal case</li>
-      <li>Donate for student legal aid</li>
-      <li>Support Myanmar diaspora legal empowerment</li>
-    </ul>
-  </div>
-  <div class="card">
-    <h3>Ways to Give</h3>
-    <p class="muted">Add Stripe/PayPal links or instructions here.</p>
-  </div>
-</div>
+  <!-- Header -->
+  <site-header></site-header>
 
-  </div>
-</section>
+  <!-- Auth Section -->
+  <main class="auth-wrap">
+    <section class="auth-card" aria-labelledby="login-title">
+      <h1 id="login-title" class="auth-title">Login</h1>
 
+      <form action="#" method="post" novalidate>
+        <label class="form-label" for="email">Email</label>
+        <input class="input" id="email" name="email" type="email" autocomplete="username" placeholder="you@example.com" required />
 
-  <footer>
-    <div class="container pad28">
-      <div class="cols cols-4">
-        <div>
-          <strong>MYTTA Foundation</strong>
-          <div><small>© <span id="year"></span> MYTTA Foundation</small></div>
-          <div><small class="muted">“Dare to Dream.”</small></div>
-        </div>
-        <div>
-          <strong>Product</strong>
-          <div><small class="muted"><a href="analytics.html">Services</a> · <a href="features.html">Case Tools</a> · <a href="articles.html">Knowledge</a></small></div>
-        </div>
-        <div>
-          <strong>Company</strong>
-          <div><small class="muted"><a href="team.html">About</a> · <a href="community.html">Community</a> · <a href="team.html#partners">Partners</a></small></div>
-        </div>
-        <div>
-          <strong>Support</strong>
-          <div><small class="muted"><a href="faq.html">FAQ</a> · <a href="contact.html">Contact</a> · <a href="donate.html">Donate</a></small></div>
-        </div>
-      </div>
-    </div>
-  </footer>
+        <label class="form-label" for="password">Password</label>
+        <input class="input" id="password" name="password" type="password" autocomplete="current-password" placeholder="••••••••" required />
 
-<script src="main.js"></script>
+        <div class="row-between">
+          <label style="display:inline-flex;align-items:center;gap:.5rem;user-select:none;">
+            <input type="checkbox" name="remember" />
+            <span class="muted">Remember me</span>
+          </label>
+          <a class="muted" href="#">Forgot password?</a>
+        </div>
+
+        <div class="space"></div>
+        <button class="btn btn-primary btn-auth block" type="submit">Log in</button>
+
+        <div class="divider"><span>or</span></div>
+
+        <button class="btn btn-auth btn-google block" type="button">
+          <svg class="gicon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.23 9.21 3.63l6.9-6.9C35.9 1.9 30.53 0 24 0 14.62 0 6.4 5.34 2.54 13.1l8.03 6.23C12.25 13.28 17.66 9.5 24 9.5z"/>
+            <path fill="#4285F4" d="M46.5 24c0-1.58-.14-3.1-.41-4.57H24v8.64h12.65c-.55 2.98-2.2 5.5-4.7 7.19l7.2 5.59C43.85 36.7 46.5 30.82 46.5 24z"/>
+            <path fill="#FBBC05" d="M10.57 28.33a14.46 14.46 0 010-8.66l-8.03-6.23C.9 16.48 0 20.14 0 24c0 3.86.9 7.52 2.54 10.56l8.03-6.23z"/>
+            <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.9-5.78l-7.2-5.59c-2 1.35-4.57 2.15-8.7 2.15-6.34 0-11.75-3.78-13.43-9.1l-8.03 6.23C6.4 42.66 14.62 48 24 48z"/>
+          </svg>
+          Continue with Google
+        </button>
+
+        <p class="muted" style="text-align:center;margin-top:14px">
+          Don’t have an account? <a href="#">Sign up</a>
+        </p>
+      </form>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <site-footer></site-footer>
+
+  <script>
+    // optional demo handler
+    document.querySelector('form')?.addEventListener('submit', e => {
+      e.preventDefault();
+      alert('Demo only — connect this to your backend or Firebase auth.');
+    });
+  </script>
 </body>
 </html>
